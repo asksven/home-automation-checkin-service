@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: blink-location
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: appsec-showcase.k8s-dev.cct.delivery
+    http:
+      paths:
+      - backend:
+          serviceName: web-svc
+          servicePort: 80

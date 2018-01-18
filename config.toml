@@ -1,0 +1,3 @@
+#server="localhost"
+server="mongo:27017"
+database="movies_db"

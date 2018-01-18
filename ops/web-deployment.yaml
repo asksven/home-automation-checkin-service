@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        name: web
+        app: web-app
+    spec:
+      containers:
+        - image: k8sdevregistry.azurecr.io/sknispel/blink-location:latest
+          name: web
+          ports:
+          - containerPort: 3000
+          resources: {}
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: k8sdevregistry-azurecr-io-key

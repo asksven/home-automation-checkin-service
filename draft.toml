@@ -1,0 +1,7 @@
+[environments]
+  [environments.development]
+    name = "blink-location"
+    namespace = "blink-dev"
+    wait = false
+    watch = false
+    watch_delay = 2
