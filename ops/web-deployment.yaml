@@ -12,11 +12,11 @@ spec:
         app: web-app
     spec:
       containers:
-        - image: k8sdevregistry.azurecr.io/sknispel/blink-location:latest
+        - image: <your-registry-goes-here>
           name: web
           ports:
           - containerPort: 3000
           resources: {}
       restartPolicy: Always
       imagePullSecrets:
-      - name: k8sdevregistry-azurecr-io-key
+      - name: location-service-registry-secret

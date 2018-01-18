@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host: appsec-showcase.k8s-dev.cct.delivery
+  - host: <your-host-goes-here>
     http:
       paths:
       - backend:
