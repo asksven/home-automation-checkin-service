@@ -80,10 +80,8 @@ func createCheckInEndPoint(w http.ResponseWriter, r *http.Request) {
 	}
 
 	checkin.ID = bson.NewObjectId()
-	now := time.Now().UTC()
-	str := fmt.Sprintf("%s", now.Format(time.RFC1123))
-//	broken, delete does not work properly if indroducing that attribute: checkin.Stamp = str
-	glog.Info("Checked in at : " + str + ": "+ checkin.Name)
+	checkin.Stamp = fmt.Sprintf("%s", time.Now().UTC().Format(time.RFC1123))
+	glog.Info("Checked in at : " + checkin.Stamp + ": "+ checkin.Name)
 
 
 	if err := data.Insert(checkin); err != nil {
