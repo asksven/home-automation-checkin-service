@@ -19,10 +19,16 @@ https://hackernoon.com/build-restful-api-in-go-and-mongodb-5e7f2ec4be94
 
 #### With k8s
 
+##### Build the image
 1. `source setenv.sh`
 1. `docker build . --tag $DOCKER_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:latest`
 1. `docker login $DOCKER_REGISTRY -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASSWORD`
 1. `docker push $DOCKER_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:latest`
+
+##### Deploy
+1. `source setenv.sh`
+1. edit `ops/ingress.yaml` and enter your endpoint DNS name
+1. `cd ops && deploy.sh`
 
 ## API
 
