@@ -28,6 +28,7 @@ https://hackernoon.com/build-restful-api-in-go-and-mongodb-5e7f2ec4be94
 ##### Deploy
 1. `source setenv.sh`
 1. edit `ops/ingress.yaml` and enter your endpoint DNS name
+1. edit `ops/web-deployment.yaml` and enter the path to the image to pull
 1. `cd ops && deploy.sh`
 
 ## API
