@@ -2,14 +2,14 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
-	"fmt"
 
 	"github.com/golang/glog"
-	"gopkg.in/mgo.v2/bson"
 	"github.com/gorilla/mux"
+	"gopkg.in/mgo.v2/bson"
 
 	"github.com/asksven/home-automation-checkin-service/config"
 	"github.com/asksven/home-automation-checkin-service/dao"
@@ -34,7 +34,6 @@ func deleteAllCheckInsEndPoint(w http.ResponseWriter, r *http.Request) {
 	data.DeleteAll()
 	respondWithJSON(w, http.StatusOK, "{}")
 }
-
 
 // findCheckInByNameEndpoint GETs a checkin by its name
 func findCheckInByNameEndpoint(w http.ResponseWriter, r *http.Request) {
@@ -81,8 +80,7 @@ func createCheckInEndPoint(w http.ResponseWriter, r *http.Request) {
 
 	checkin.ID = bson.NewObjectId()
 	checkin.Stamp = fmt.Sprintf("%s", time.Now().UTC().Format(time.RFC1123))
-	glog.Info("Checked in at : " + checkin.Stamp + ": "+ checkin.Name)
-
+	glog.Info("Checked in at : " + checkin.Stamp + ": " + checkin.Name)
 
 	if err := data.Insert(checkin); err != nil {
 		respondWithError(w, http.StatusInternalServerError, err.Error())
@@ -123,6 +121,8 @@ func init() {
 
 	data.Server = configuration.Server
 	data.Database = configuration.Database
+	glog.Info("Connecting to : " + data.Server + ": " + data.Database)
+
 	data.Connect()
 }
 
