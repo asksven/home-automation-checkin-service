@@ -16,7 +16,13 @@ spec:
       containers:
       - image: mongo:latest
         name: mongo
-        resources: {}
+        resources:
+          limits:
+            cpu: 50m
+            memory: 100Mi
+          requests:
+            cpu: 20m
+            memory: 50Mi
         volumeMounts:
           - mountPath: "/data"
             name: mongodbvolume

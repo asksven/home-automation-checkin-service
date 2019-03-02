@@ -16,7 +16,13 @@ spec:
           name: web
           ports:
           - containerPort: 3000
-          resources: {}
+          resources:
+            limits:
+              cpu: 100m
+              memory: 50Mi
+            requests:
+              cpu: 50m
+              memory: 10Mi
       restartPolicy: Always
       imagePullSecrets:
       - name: location-service-registry-secret
