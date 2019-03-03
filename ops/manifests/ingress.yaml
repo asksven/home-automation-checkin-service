@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host: <your-hostname-goes-here>
+  - host: { HOST1 }
     http:
       paths:
       - backend:
