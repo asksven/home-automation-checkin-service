@@ -8,7 +8,7 @@ stages:
 
     # Define the request to be made: BASE_URL contains https:// already
     request:
-      url: {tavern.env_vars.BASE_URL}/checkins
+      url: https://{tavern.env_vars.BASE_URL}/checkins
       method: GET
 
     # ...and the expected response code and body

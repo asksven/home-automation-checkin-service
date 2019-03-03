@@ -110,8 +110,8 @@ api test temp deployment:
     DEPLOY_ENV: temp
     # we deployed to a temp name
     NAMESPACE: checkin-${CI_BUILD_REF}
-    # we need to pass the URL to test
-    BASE_URL: https://checkin-${CI_BUILD_REF}.asksven.io
+    # we need to pass the URL to test (no https:// here)
+    BASE_URL: checkin-${CI_BUILD_REF}.asksven.io
 
 cleanup temp deployment:
   stage: test_clean
@@ -146,8 +146,8 @@ ui test branch deployment:
     - asksven-homelab-prd-public
   variables:
     DEPLOY_ENV: testing
-    # we need to pass the URL to test
-    BASE_URL: https://blog-${CI_BUILD_REF_SLUG}.asksven.io
+    # we need to pass the URL to test (no https:// here)
+    BASE_URL: checkin-${CI_BUILD_REF_SLUG}.asksven.io
   except:
   - master
 
@@ -169,7 +169,7 @@ ui test prd deployment:
   variables:
     DEPLOY_ENV: production
     # we need to pass the URL to test
-    BASE_URL: https://checkin.asksven.io
+    BASE_URL: checkin.asksven.io
   only:
   - master
 
