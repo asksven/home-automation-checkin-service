@@ -7,14 +7,14 @@ variables:
 
 stages:
   - build
-  # - test_deploy
-  # - test_status
-  # - test_run
-  # - test_clean  
-  # - deploy
-  # - deploy_test 
-  # - status
-  # - cleanup
+  - test_deploy
+  - test_status
+  - test_run
+  - test_clean  
+  - deploy
+  - deploy_test 
+  - status
+  - cleanup
 
 
 # ===========================================
