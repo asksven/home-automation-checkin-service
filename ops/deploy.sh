@@ -59,13 +59,16 @@ do
     > "${TARGET_DIR}/$(basename ${f})"
 done
 
-
-COMMAND1="kubectl --namespace=$NAMESPACE apply -f ${TARGET_DIR}"
+# create the namespace first
+COMMAND1="kubectl --namespace=$NAMESPACE apply -f ${TARGET_DIR}/ns.yaml"
+COMMAND2="kubectl --namespace=$NAMESPACE apply -f ${TARGET_DIR}"
 
 if [ "$TESTING" = "1" ] 
 then
   echo '>>>would execute command:' ${COMMAND1}
+  echo '>>>would execute command:' ${COMMAND2}
 
 else
   eval $COMMAND1
+  eval $COMMAND2
 fi

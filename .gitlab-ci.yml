@@ -1,7 +1,7 @@
 variables:
   # Gitlab namespace with branch name: "namespace-branchname"
-  NAMESPACE: ${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}
-  DOCKER_IMAGE_URL: asksven/checkin-service
+  NAMESPACE: checkin-${CI_COMMIT_REF_SLUG}
+  DOCKER_IMAGE_URL: asksven/checkin
 
  
 
