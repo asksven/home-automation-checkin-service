@@ -54,12 +54,12 @@ build container:
 .test_template: &test_template
   image: joyzoursky/python-chromedriver:3.6
   before_script:
-    - pip install -r tests/webtests_1/requirements.txt
+    - pip install -r tests/requirements.txt
   tags:
     - asksven-homelab-prd-public
   script:
-    - cd tests/webtests_1
-    - python -u selenium-python.py
+    - cd tests/apitests_1
+    - py.test --junit-xml=../output/log.xml
   artifacts:
     paths:
     - tests/output
