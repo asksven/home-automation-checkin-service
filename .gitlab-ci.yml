@@ -89,7 +89,7 @@ deploy temp:
   variables:
     DEPLOY_ENV: temp
     # we need a temp name to deploy to
-    NAMESPACE: ${CI_PROJECT_NAME}-${CI_BUILD_REF}
+    NAMESPACE: checkin-${CI_BUILD_REF}
 
 status temp_deployment:
   stage: test_status  
@@ -99,7 +99,7 @@ status temp_deployment:
   variables:
     DEPLOY_ENV: temp
     # we deployed to a temp name
-    NAMESPACE: ${CI_PROJECT_NAME}-${CI_BUILD_REF}    
+    NAMESPACE: checkin-${CI_BUILD_REF}    
     
 ui test temp deployment:
   stage: test_run
@@ -109,7 +109,7 @@ ui test temp deployment:
   variables:
     DEPLOY_ENV: temp
     # we deployed to a temp name
-    NAMESPACE: ${CI_PROJECT_NAME}-${CI_BUILD_REF}
+    NAMESPACE: checkin-${CI_BUILD_REF}
     # we need to pass the URL to test
     BASE_URL: https://checkin-${CI_BUILD_REF}.asksven.io
 
@@ -121,7 +121,7 @@ cleanup temp deployment:
   variables:
     DEPLOY_ENV: temp
     # we deployed to a temp name
-    NAMESPACE: ${CI_PROJECT_NAME}-${CI_BUILD_REF}
+    NAMESPACE: checkin-${CI_BUILD_REF}
 
 # ===========================================
 #  Deployment stage, either:
