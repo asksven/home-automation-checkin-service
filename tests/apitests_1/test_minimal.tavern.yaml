@@ -1,14 +1,14 @@
 ---
 # Every test file has one or more tests...
-test_name: Get some fake data from the JSON placeholder API
+test_name: Get some data from the API
 
 # ...and each test has one or more stages (e.g. an HTTP request)
 stages:
-  - name: Make sure we have the right ID
+  - name: Make sure we get a return code 200
 
-    # Define the request to be made...
+    # Define the request to be made: BASE_URL contains https:// already
     request:
-      url: https://{tavern.env_vars.BASE_URL}/checkins
+      url: {tavern.env_vars.BASE_URL}/checkins
       method: GET
 
     # ...and the expected response code and body

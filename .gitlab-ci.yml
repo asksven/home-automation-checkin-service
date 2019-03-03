@@ -101,7 +101,7 @@ status temp_deployment:
     # we deployed to a temp name
     NAMESPACE: checkin-${CI_BUILD_REF}    
     
-ui test temp deployment:
+api test temp deployment:
   stage: test_run
   <<: *test_template
   tags:
