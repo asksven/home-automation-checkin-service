@@ -12,7 +12,7 @@ spec:
         app: web-app
     spec:
       containers:
-        - image: asksven/{{ PROJECT_NAME }}:{{ TAG }}
+        - image: asksven/{{ IMAGE_URL }}:{{ TAG }}
           name: web
           ports:
           - containerPort: 3000

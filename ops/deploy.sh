@@ -56,6 +56,7 @@ do
     -D TAG=${CI_BUILD_REF} \
     -D HOST1=${HOST1} \
     -D DEPLOY_ENV=${DEPLOY_ENV} \
+    -D IMAGE_URL=${DOCKER_IMAGE_URL} \
     > "${TARGET_DIR}/$(basename ${f})"
 done
 
