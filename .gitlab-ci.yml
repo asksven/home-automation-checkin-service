@@ -20,6 +20,15 @@ stages:
 # ===========================================
 #  Build the container
 # ===========================================
+lint_dockerfile:
+  stage: build
+  tags:
+    - asksven-homelab-prd-public
+
+  image: hadolint/hadolint:latest-debian
+  script:
+    - hadolint Dockerfile
+
 build container:
   stage: build
   image: docker:18.06.1-ce
