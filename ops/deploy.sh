@@ -17,7 +17,7 @@ echo '---$CI_COMMIT_REF_SLUG:' ${CI_COMMIT_REF_SLUG}
 
 if [ "$DEPLOY_ENV" = "production" ]
 then
-    HOST1="checking.asksven.io"
+    HOST1="checkin.asksven.io"
 elif [ "$DEPLOY_ENV" = "temp" ] 
 then
     # for temp we use the ${CI_BUILD_REF} to create a unique URL    
