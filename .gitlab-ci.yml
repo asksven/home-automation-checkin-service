@@ -70,8 +70,8 @@ build container:
   #- asksven-homelab-prd-public
   - asksven-homelab-dev
   script:
-    - cd tests/apitests_1
-    - py.test --junit-xml=../output/log.xml
+#    - cd tests/apitests_1
+#    - py.test --junit-xml=../output/log.xml
   artifacts:
     paths:
     - tests/output
