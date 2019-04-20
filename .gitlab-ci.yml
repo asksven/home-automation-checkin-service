@@ -23,8 +23,7 @@ stages:
 lint_dockerfile:
   stage: build
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
 
   image: hadolint/hadolint:latest-debian
   script:
@@ -34,8 +33,7 @@ build container:
   stage: build
   image: docker:18.06.1-ce
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   services:
     - docker:18.06.1-ce-dind
   variables:
@@ -67,12 +65,10 @@ build container:
   before_script:
     - pip install -r tests/requirements.txt
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   script:
-    - echo test bypassed
-#    - cd tests/apitests_1
-#    - py.test --junit-xml=../output/log.xml
+    - cd tests/apitests_1
+    - py.test --junit-xml=../output/log.xml
   artifacts:
     paths:
     - tests/output
@@ -98,8 +94,7 @@ deploy temp:
   stage: test_deploy
   <<: *deploy_template
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   variables:
     DEPLOY_ENV: temp
     # we need a temp name to deploy to
@@ -109,8 +104,7 @@ status temp_deployment:
   stage: test_status  
   <<: *status_template
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   variables:
     DEPLOY_ENV: temp
     # we deployed to a temp name
@@ -120,8 +114,7 @@ api test temp deployment:
   stage: test_run
   <<: *test_template
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   variables:
     DEPLOY_ENV: temp
     # we deployed to a temp name
@@ -133,8 +126,7 @@ cleanup temp deployment:
   stage: test_clean
   <<: *cleanup_template
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   variables:
     DEPLOY_ENV: temp
     # we deployed to a temp name
@@ -150,8 +142,7 @@ deploy for branch:
   stage: deploy
   <<: *deploy_template
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   variables:
     DEPLOY_ENV: testing
   except:
@@ -161,8 +152,7 @@ ui test branch deployment:
   stage: deploy_test
   <<: *test_template
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   variables:
     DEPLOY_ENV: testing
     # we need to pass the URL to test (no https:// here)
@@ -174,8 +164,7 @@ deploy for prd:
   stage: deploy
   <<: *deploy_template
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   variables:
     DEPLOY_ENV: production
   only:
@@ -185,8 +174,7 @@ ui test prd deployment:
   stage: deploy_test
   <<: *test_template
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   variables:
     DEPLOY_ENV: production
     # we need to pass the URL to test
@@ -204,8 +192,7 @@ status namespace:
   stage: status  
   <<: *status_template
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
 
 # ===========================================
 #  manual clean-up stage for !prd namespaces
@@ -214,8 +201,7 @@ cleanup:
   stage: status
   <<: *cleanup_template
   tags:
-  #- asksven-homelab-prd-public
-  - asksven-homelab-dev
+  - asksven-homelab-prd-public
   when: manual
   except:
   - master  
