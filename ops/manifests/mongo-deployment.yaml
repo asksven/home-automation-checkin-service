@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    name: mongo
+    app: mongo
   name: mongo
 spec:
   replicas: 1
@@ -11,7 +11,7 @@ spec:
     metadata:
       labels:
         name: mongo
-        app: blink-location
+        app: mongo
     spec:
       containers:
       - image: mongo:latest

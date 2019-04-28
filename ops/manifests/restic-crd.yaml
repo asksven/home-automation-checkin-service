@@ -1,0 +1,24 @@
+apiVersion: stash.appscode.com/v1alpha1
+kind: Restic
+metadata:
+  name: azure-restic
+spec:
+  selector:
+    matchLabels:
+      app: mongo
+  fileGroups:
+  - path: /data
+    retentionPolicyName: 'keep-last-5'
+  backend:
+    azure:
+      container: stashprd
+      prefix: checkin-master
+    storageSecretName: azure-secret
+  schedule: '@daily'
+  volumeMounts:
+  - mountPath: /data
+    name: mongodbvolume
+  retentionPolicies:
+  - name: 'keep-last-5'
+    keepLast: 5
+    prune: true
